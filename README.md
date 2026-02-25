@@ -1,5 +1,5 @@
 Feito por:
 
-- Renan Aprigio Dias de Moura <a href: "github.com/renandias3158"><a/>
+-  <a href = "github.com/renandias3158">Renan Aprigio Dias de Moura<a/>
 
-- Matheus Luciano de Caldas Figueiredo <a href: "github.com/Matheus-LucianoC"><a/>
+-  <a href = "github.com/Matheus-LucianoC">Matheus Luciano de Caldas Figueiredo<a/>

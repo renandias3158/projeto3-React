@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -44,9 +44,9 @@ function LoginScreen({ navigation }) {
 function ListaScreen({ navigation }) {
 
   const contatos = [
-    { id: '1', nome: 'Marcos Andrade', telefone: '81 988553424' },
-    { id: '2', nome: 'Patrícia Tavares', telefone: '81 998765332' },
-    { id: '3', nome: 'Rodrigo Antunes', telefone: '81 987765525' },
+    { id: '1', nome: 'Marcos Andrade',email: "Marquinhos@hot.email" ,telefone: '81 988553424' },
+    { id: '2', nome: 'Patrícia Tavares',email: "Patricia@email.com" ,telefone: '81 998765332' },
+    { id: '3', nome: 'Rodrigo Antunes',email: "Rodr4312341@email.com" ,telefone: '81 987765525' },
   ];
 
   return (
@@ -59,7 +59,13 @@ function ListaScreen({ navigation }) {
         renderItem={({ item }) => (
   <TouchableOpacity
     style={styles.card}
-    onPress={() => navigation.navigate('AlterarContato')}
+    onPress={() =>
+  navigation.navigate('AlterarContato', {
+    nome: item.nome,
+    telefone: item.telefone,
+    email: item.email
+  })
+}
   >
     <Image
   source={{ uri: 'https://cdn-icons-png.flaticon.com/512/149/149071.png' }}
@@ -113,14 +119,35 @@ function CadastroContatoScreen() {
 }
 
 
-function AlterarContatoScreen() {
+function AlterarContatoScreen({ route }) {
+
+  const { nome, telefone, email } = route.params;
+
+  const [novoNome, setNovoNome] = useState(nome);
+  const [novoTelefone, setNovoTelefone] = useState(telefone);
+  const [novoEmail, setNovoEmail] = useState(email);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>ALTERAÇÃO / EXCLUSÃO</Text>
 
-      <TextInput placeholder="Nome" style={styles.input} />
-      <TextInput placeholder="Email" style={styles.input} />
-      <TextInput placeholder="Telefone" style={styles.input} />
+      <TextInput
+        style={styles.input}
+        value={novoNome}
+        onChangeText={setNovoNome}
+      />
+
+      <TextInput
+        style={styles.input}
+        value={novoEmail}
+        onChangeText={setNovoEmail}
+      />
+
+      <TextInput
+        style={styles.input}
+        value={novoTelefone}
+        onChangeText={setNovoTelefone}
+      />
 
       <TouchableOpacity style={styles.warningButton}>
         <Text style={styles.buttonText}>Alterar</Text>
